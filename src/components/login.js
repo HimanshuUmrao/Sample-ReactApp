@@ -1,9 +1,51 @@
 import React, { Component} from 'react';
 import { Link } from "react-router-dom";
 import './login.css'
+import Joi from 'joi-browser';
+import axios from 'axios';
+import validator from 'validator';
+
 
 class Login extends React.Component{
-    render(){
+    state = {
+        username: "",
+        password: "",
+        errors: {
+          username: '',
+          password: ''
+        }
+      }
+      onSubmit = (e) => {
+        e.preventDefault();
+        const { username, password } = this.state
+        let input = {
+          username: username,
+          password: password
+        }
+        axios.post(`http://localhost:3000/login`,
+          {
+            authKey: username,
+            password: password,
+          })
+          .then(res => {
+            const data = res.data;
+            console.log(data)
+            this.setState({ data });
+            localStorage.setItem('token', data.token)
+            this.props.history.push("/");
+          })
+      }
+
+      
+      handleChange = (e) => {
+        let { name, value } = e.target
+        this.setState({
+          [name]: value
+        })
+      }
+      
+    render() {
+        const {username, password} = this.state;
         return(
             <div>
                 <div className="container">    
@@ -15,22 +57,34 @@ class Login extends React.Component{
                         </div>
                         <div className="panel-body" >
 
-                        <form id="loginform" className="form-horizontal" role="form">
+                        <form id="loginform" className="form-horizontal" role="form" onSubmit={this.onSubmit}>
                                     
                             <div className="input-group">
                                         <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" className="form-control" name="username" value="" placeholder="username or email"/>                                        
+                                        <input type="text" className="form-control" name="username" value={username} onChange={this.handleChange} placeholder="username or email"/> 
+                                        {
+                                            this.state.errors.username &&
+                                            <label>
+                                                {this.state.errors.username}
+                                            </label>
+                                        }                                       
                             </div>
                                 
                             <div className="input-group">
                                         <span className="input-group-addon"><i className="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" className="form-control" name="password" placeholder="password"/>
+                                        <input id="login-password" type="password" className="form-control" name="password" value={password} onChange={this.handleChange} placeholder="password"/>
+                                        {
+                                            this.state.errors.password &&
+                                            <label>
+                                                {this.state.errors.password}
+                                            </label>
+                                        } 
                             </div>
                                     
                                     
                             <div className="form-group">
                                     <div className="col-sm-12 controls text-center">
-                                      <a href="" className="btn btn-success">Login</a>
+                                      <button href="" type="submit" className="btn btn-success">Login</button>
                                     </div>
                             </div>
 
@@ -39,7 +93,7 @@ class Login extends React.Component{
                                 <div className="col-md-12 control">
                                     <div className="bottom-line">
                                         Don't have an account! 
-                                        <Link to="/signup">Topics</Link>
+                                        <Link to="/signup">Signup</Link>
                                        
                                     </div>
                                 </div>
@@ -49,6 +103,17 @@ class Login extends React.Component{
                     </div>
 
                 </div>
+                {/* <div class="sk-cube-grid">
+  <div class="sk-cube sk-cube1"></div>
+  <div class="sk-cube sk-cube2"></div>
+  <div class="sk-cube sk-cube3"></div>
+  <div class="sk-cube sk-cube4"></div>
+  <div class="sk-cube sk-cube5"></div>
+  <div class="sk-cube sk-cube6"></div>
+  <div class="sk-cube sk-cube7"></div>
+  <div class="sk-cube sk-cube8"></div>
+  <div class="sk-cube sk-cube9"></div>
+</div> */}
             </div>
         )
 

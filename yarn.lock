@@ -1693,6 +1693,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
+
 clean-css@4.1.x:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.1.11.tgz#2ecdf145aba38f54740f26cefd0ff3e03e125d6a"
@@ -4428,6 +4432,10 @@ jest@20.0.4:
   dependencies:
     jest-cli "^20.0.4"
 
+joi-browser@^13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/joi-browser/-/joi-browser-13.0.1.tgz#06a7b782d94bca6fa0f107138846ea16588b2e7b"
+
 joi@^13.1.2:
   version "13.1.2"
   resolved "https://registry.yarnpkg.com/joi/-/joi-13.1.2.tgz#b2db260323cc7f919fafa51e09e2275bd089a97e"
@@ -5130,6 +5138,10 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
+node-bin-setup@^1.0.0:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.0.6.tgz#4b5c9bb937ece702d7069b36ca78af4684677528"
+
 node-fetch@^1.0.1:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
@@ -5197,6 +5209,12 @@ node-pre-gyp@^0.6.39:
     semver "^5.3.0"
     tar "^2.2.1"
     tar-pack "^3.4.0"
+
+node@^9.10.0:
+  version "9.10.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-9.10.0.tgz#708d9f02666f9a663d818835c731db85833c0e9e"
+  dependencies:
+    node-bin-setup "^1.0.0"
 
 nopt@^4.0.1:
   version "4.0.1"
@@ -6196,6 +6214,12 @@ react-router@^4.2.0:
     path-to-regexp "^1.7.0"
     prop-types "^15.5.4"
     warning "^3.0.0"
+
+react-table@^6.8.0:
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.8.0.tgz#5ce402eb735df68534c03dabb3faa031478b6a58"
+  dependencies:
+    classnames "^2.2.5"
 
 react@^16.2.0:
   version "16.2.0"
